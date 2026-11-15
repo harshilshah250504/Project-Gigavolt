@@ -69,6 +69,21 @@ python gigavolt-m6/ask_m6.py "What does the G-3500 technical documentation say a
 
 The first run validates and loads the fixtures. A repeat uses the telemetry file fingerprint and verifies the service dispatch, payload, vector and audit counts. The voltage question requires the corresponding manual in the vector corpus.
 
+## Course inputs and validation
+
+Use the instructor-provided files from the Advanced Data Management course. These are the raw input counts observed before MariaDB cleansing and deduplication.
+
+| Input | Observed source count |
+|---|---:|
+| `customers.csv` | 525 records |
+| `equipment.csv` | 2,575 records |
+| `parts.csv` | 150 records |
+| `dispatches.csv` | 5,000 records |
+| `warranty_claims.csv` | 1,248 records |
+| `UnstructuredData.zip` | 25 PDFs, 54 pages, 53 text-bearing pages |
+
+The five CSVs had consistent field counts within each file. The Milestone 4 extractor processed the supplied archive and recorded the known blank page. These checks verify the source files and document extraction. Run the lab acceptance tasks after loading the data to verify the deployed database and application.
+
 ## Benchmark and provenance
 
 The original EC2 comparison used the same 22 sequential prompts in both runs. The final run returned 19 answers and three insufficient-evidence responses with zero execution errors.
