@@ -1,8 +1,22 @@
 # Project Gigavolt
 
-Gigavolt is an ISTM 622 data engineering project by Harshil Prashant Shah. It follows equipment, service, warranty, telemetry, and technical documentation from source ingestion through a question-answering application with record-level citations.
+An AWS-based data lakehouse and retrieval-augmented generation (RAG) application for industrial battery support. A field engineer can ask about a unit's service history, recent telemetry, or a manual specification and trace the answer to the underlying record or passage.
 
-![Gigavolt architecture](docs/architecture.png)
+**ISTM 622 semester project · Harshil Prashant Shah**
+
+## What the system does
+
+- **Ingests and validates data.** SQL transforms raw ERP records into normalized tables. Incremental loaders fingerprint service and telemetry inputs so unchanged files can be skipped.
+- **Retrieves evidence across stores.** MariaDB serves relational records, MongoDB serves nested telemetry, and MariaDB Vector searches MiniLM document embeddings.
+- **Returns traceable answers.** Structured routes render saved records directly. Ollama summarizes selected technical passages. Responses retain source identifiers for review.
+
+![Architecture showing service and telemetry ingestion, hybrid retrieval, and cited answers](docs/architecture.png)
+
+## Results at a glance
+
+On the same 22-prompt EC2 workload, all-request P95 improved from **7.547 s to 4.976 s** and sequential throughput rose from **0.363 to 0.780 requests/s**. The six final answers that called Ollama had a **4.531 s end-to-end median**. The final citation audit resolved **25 of 25 emitted references** to saved evidence.
+
+[See benchmark scope, measurements, and reproduction commands](#benchmark-and-provenance).
 
 ## Milestones
 
@@ -15,14 +29,22 @@ Gigavolt is an ISTM 622 data engineering project by Harshil Prashant Shah. It fo
 | 5 | [Hybrid SQL, MongoDB, vector and Ollama query application](gigavolt-m5/) |
 | 6 | [Incremental loaders, verified lookup routes and benchmarks](gigavolt-m6/) |
 
-## Setup
+## Verify locally
+
+The chunking and cleaning tests run without access to the lab database or model servers.
+
+```bash
+python3 -m unittest discover -s Gigavolt_M4_Existing_Instance/src -p test_windows.py
+```
+
+## Lab setup
 
 Use a disposable lab environment with MariaDB Vector, MongoDB, and a running Ollama service for the query application. The SQL tools use the local MariaDB client through sudo as in the original lab. Milestone 3 requires separate Galera nodes and a ColumnStore-enabled benchmark node. Its cluster configuration contains placeholders for the three addresses. Review the cluster scripts against the actual node state before using them.
 
 1. Obtain the authorized ERP CSV inputs, technical manual archive, and telemetry dataset from their original source. Raw inputs, database dumps and local credentials are excluded. The two files under `gigavolt-m6/examples` are synthetic fixtures.
 2. Create a fresh MariaDB schema named `gigavolt`. Use the Milestone 1 script with the five CSVs in MariaDB's configured import directory. The script contains table drops from the original lab workflow and is intended for a disposable schema. Apply the numbered Milestone 2 scripts in order in that schema.
 3. Follow the [Milestone 4 runbook](Gigavolt_M4_Existing_Instance/README.md) for the database account and corpus setup. Use the checked-in folder as the project root. The hybrid application expects the Milestone 4 run artifacts at `Gigavolt_M4_Existing_Instance/runs/run01` and the local connection configuration at `Gigavolt_M4_Existing_Instance/config/db.json`.
-4. Install the Python dependencies in a virtual environment. Copy `.env.example` to `.env`, set the MongoDB and Ollama endpoints if they run remotely, and set `GIGAVOLT_VECTOR_TABLE` to the schema-qualified M16 table listed in `runs/run01/tables.json`. Load the Ollama model configured in `gigavolt-m5/synthesis_records.py`.
+4. Install the Python dependencies in a virtual environment. Copy `.env.example` to `.env`, set the MongoDB and Ollama endpoints if they run remotely, and set `GIGAVOLT_VECTOR_TABLE` to the schema-qualified M16 table listed in `runs/run01/tables.json`. Load `qwen2.5:1.5b` on the Ollama host.
 
 ```bash
 python3 -m venv .venv

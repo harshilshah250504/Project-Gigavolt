@@ -26,32 +26,18 @@ Screenshot S02: versions, resources and vector settings. S03: existing M1/M2 obj
 
 If the database is unavailable, Vector is absent, the instance is part of Galera, or resources are insufficient, pause for an environment-specific plan. Do not reinstall or bootstrap arbitrarily. This kit conservatively targets MariaDB 11.8+, x86_64, Python 3.10–3.13, about 4 GiB or more RAM, and at least 8 GiB free disk before dependency installation. These are planning checks, not universal software minimums. If necessary, adjust the SAME instance after backing up and confirming Learner Lab allowances.
 
-## 3. Transfer the package
+## 3. Set up the project folder
 
-Download `Gigavolt_M4_Existing_Instance.zip` to your Mac Downloads. Open Mac Terminal and run Bash:
-
-```bash
-bash
-read -r -p "Full path to existing instance PEM key: " M4_KEY
-read -r -p "Existing M1/M2 instance public IP: " M4_IP
-chmod 600 "$M4_KEY"
-scp -i "$M4_KEY" "$HOME/Downloads/Gigavolt_M4_Existing_Instance.zip" "ubuntu@$M4_IP:~/"
-ssh -i "$M4_KEY" "ubuntu@$M4_IP"
-```
-
-Verify the SSH host fingerprint through a trusted console when first connecting. If SSH times out, inspect the existing security group and your current client IP. Do not expose MariaDB publicly. This transfer path uses laptop SSH; browser Instance Connect can use a different permitted source.
-
-On the existing instance, use Python to extract the trusted project ZIP without installing anything:
+Clone or copy the Project Gigavolt repository onto the lab instance. Run these commands from the repository root.
 
 ```bash
-python3 -m zipfile -e "$HOME/Gigavolt_M4_Existing_Instance.zip" "$HOME"
-cd "$HOME/Gigavolt_M4_Existing_Instance"
+cd Gigavolt_M4_Existing_Instance
 mkdir -p data logs runs backups evidence
 set -o pipefail
 bash preflight.sh 2>&1 | tee logs/preflight.log
 ```
 
-If preflight reports review required, preserve its output and resolve it before continuing. The script performs no writes to MariaDB and does not upgrade anything.
+The preflight checks the existing environment. Review its output before continuing.
 
 ## 4. Preserve prior work before new installations
 
@@ -119,7 +105,7 @@ sha256sum data/services.jsonl
 
 This reads your local Milestone 2 text records; no cross-instance transfer is required. Screenshot S07: SQL count and export line count. If `rag_payloads` or its expected columns do not exist, stop for a source-schema adjustment instead of inventing records. The exporter uses payload_id, dispatch_id, equipment_id, created_at and payload_text based on the earlier schema you supplied.
 
-The rest of this guide covers processing, measurement, notebook execution and submission. Follow `SCREENSHOTS.md` for exact evidence checkpoints.
+The rest of this guide covers processing, measurement, notebook execution and submission.
 
 ## 8. Extract and clean — NEW instance
 
