@@ -104,7 +104,20 @@ python -u gigavolt-m6/benchmark_m6.py baseline
 python -u gigavolt-m6/benchmark_final80.py
 ```
 
-The historical benchmarks include prompts targeting the original course data and synthetic recovery records. Fresh runs can differ with different inputs, models, or hardware. The public-ready source was syntax-checked and the Milestone 4 text tests were run locally. The database deployment and full benchmark were not rerun from this checkout.
+The historical benchmarks include prompts targeting the original course data and synthetic recovery records. Fresh runs can differ with different inputs, models, or hardware.
+
+## Live verification on EC2
+
+On November 15, 2026, commit `cf680a2` passed the lab acceptance check in a separate checkout on the existing AWS deployment. The check used the deployed MariaDB Vector, MongoDB, Ollama model, and original lab inputs.
+
+| Check | Verified result |
+|---|---|
+| Telemetry lookup | The live answer reported `STANDBY` and 31.0 °C, matching MongoDB record `TLM-M6-DEMO-001`. |
+| Service ingestion evidence | The demo dispatch had one stored dispatch, one RAG payload, indexed vector content, and one insert audit entry. |
+| G-3500 manual lookup | The answer returned 750 V nominal and a 620–860 V DC operating range, citing page 1 of the model manual. |
+| X-7000 hybrid answer | The Ollama statement matched page 1 of engineering change order `GV-ECO-2024-019`: DSP firmware v2.4.11-b or later, with commutation dead-time changing from 2.2 to 2.8 µs. |
+
+All six Milestone 4 text-processing tests also passed locally. The live acceptance check reused the configured lab and ran from the command line. A fresh infrastructure deployment, a new 22-prompt benchmark, and a run through the VS Code task interface were outside this verification.
 
 ## Run and verify from VS Code
 
