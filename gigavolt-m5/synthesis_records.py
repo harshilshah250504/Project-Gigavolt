@@ -150,6 +150,7 @@ def synthesize(question, selected, sources):
     elapsed = time.perf_counter() - started
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     path = Path(__file__).resolve().parent / "results" / f"mixed_generation_{stamp}.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps({
         "question": question, "generated": generated,
         "audits": audits, "errors": errors,

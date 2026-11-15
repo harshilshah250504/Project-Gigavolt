@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Gigavolt: Check lab prerequisites",
+      "type": "process",
+      "command": "bash",
+      "args": ["-c", "set -e; if [ -f .env ]; then source .env; fi; exec .venv/bin/python gigavolt-m6/check_lab.py"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "Gigavolt: Run incremental pipeline",
+      "type": "process",
+      "command": "bash",
+      "args": ["-c", "set -e; if [ -f .env ]; then source .env; fi; exec .venv/bin/python -u gigavolt-m6/run_pipeline.py"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
+      "label": "Gigavolt: Verify live answers",
+      "type": "process",
+      "command": "bash",
+      "args": ["-c", "set -e; if [ -f .env ]; then source .env; fi; exec .venv/bin/python gigavolt-m6/check_lab.py --answers"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    }
+  ]
+}

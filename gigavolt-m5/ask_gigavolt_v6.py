@@ -325,6 +325,7 @@ def ask(question):
     total = time.perf_counter() - started
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     destination = ROOT / "results" / f"interactive_{stamp}.json"
+    destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(json.dumps({
         "question": question, "answer": answer, "generated_answer": generated, "generation_file": generation_file,
         "source_map": sources, "candidate_pool": pool,

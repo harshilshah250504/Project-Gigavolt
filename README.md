@@ -90,3 +90,27 @@ python -u gigavolt-m6/benchmark_final80.py
 ```
 
 The historical benchmarks include prompts targeting the original course data and synthetic recovery records. Fresh runs can differ with different inputs, models, or hardware. The public-ready source was syntax-checked and the Milestone 4 text tests were run locally. The database deployment and full benchmark were not rerun from this checkout.
+
+## Run and verify from VS Code
+
+Open the project root in VS Code on the Linux machine hosting the lab, or use VS Code Remote SSH to open that folder on EC2. Create the repository-local `.venv`, load the course data, stage the two demo fixtures, and configure `.env` using the setup steps above. Use a dedicated lab and keep the fixed service demo dispatch ID. If the original lab already contains these records, keep the original staged fixture files. Changing the fixture under an existing log or dispatch ID creates a conflict by design.
+
+Use **Tasks: Run Task** in the Command Palette and run these tasks in order.
+
+| Task | What to look for |
+|---|---|
+| **Gigavolt: Check lab prerequisites** | MariaDB tables and an existing equipment reference, the indexed manual corpus, MongoDB telemetry with a unique log ID index, and a reachable Ollama model. |
+| **Gigavolt: Run incremental pipeline** | Both stages succeed. On a repeat, the same inputs skip processing after the prior writes are verified. |
+| **Gigavolt: Verify live answers** | The telemetry answer matches the stored MongoDB event and its citation. The service dispatch has a corresponding payload, vector chunk and audit entry. The G-3500 manual route returns its documented voltage range, and the X-7000 hybrid route returns a cited Ollama statement for review. |
+
+The terminal equivalents, from the repository root, are:
+
+```bash
+source .env
+.venv/bin/python gigavolt-m6/check_lab.py
+.venv/bin/python -u gigavolt-m6/run_pipeline.py
+.venv/bin/python -u gigavolt-m6/run_pipeline.py
+.venv/bin/python gigavolt-m6/check_lab.py --answers
+```
+
+The acceptance check uses the original Gigavolt corpus for the manual and firmware questions. It checks exact results for the synthetic telemetry and G-3500 specification. The Ollama-backed check confirms the route executed and produced a citation. Its generated statement still needs human comparison with the cited passage.
