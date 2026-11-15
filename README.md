@@ -117,7 +117,7 @@ On November 15, 2026, commit `cf680a2` passed the lab acceptance check in a sepa
 | G-3500 manual lookup | The answer returned 750 V nominal and a 620–860 V DC operating range, citing page 1 of the model manual. |
 | X-7000 hybrid answer | The Ollama statement matched page 1 of engineering change order `GV-ECO-2024-019`: DSP firmware v2.4.11-b or later, with commutation dead-time changing from 2.2 to 2.8 µs. |
 
-All six Milestone 4 text-processing tests also passed locally. The live acceptance check reused the configured lab and ran from the command line. A fresh infrastructure deployment, a new 22-prompt benchmark, and a run through the VS Code task interface were outside this verification.
+All six Milestone 4 text-processing tests also passed locally. The live acceptance check passed both from the EC2 command line and from **Gigavolt: Verify live answers** in VS Code over Remote SSH. The VS Code run loaded the repository-local environment settings and passed all four checks. The X-7000 passage comparison above was performed on the earlier command-line answer. A fresh infrastructure deployment and a new 22-prompt benchmark were outside this verification.
 
 ## Run and verify from VS Code
 
