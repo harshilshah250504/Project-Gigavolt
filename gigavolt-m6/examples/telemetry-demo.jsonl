@@ -1,0 +1,1 @@
+{"log_id": "TLM-M6-DEMO-001", "equipment_id": "SN-M6-0001", "timestamp": "2026-11-14T17:30:00.000Z", "model": "PowerStation G-3500", "status": "STANDBY", "fault_code": null, "severity": "Info", "telemetry": {"voltage_v": 800, "temperature_c": 31.0}, "flagged_components": [], "notes": "Synthetic demonstration event."}

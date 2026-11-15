@@ -1,0 +1,124 @@
+{
+  "baseline": {
+    "requests": 22,
+    "answered": 19,
+    "insufficient_evidence": 3,
+    "errors_or_unclassified": 0,
+    "startup_seconds": 6.34532,
+    "attempted_requests_per_second": 0.363,
+    "all_attempts_seconds": {
+      "n": 22,
+      "p50": 0.80025,
+      "p95": 7.547369,
+      "p99": 10.969134
+    },
+    "answered_seconds": {
+      "n": 19,
+      "p50": 4.059848,
+      "p95": 8.054187,
+      "p99": 11.095871
+    },
+    "recorded_nonzero_stage_seconds": {
+      "sql_seconds": {
+        "n": 19,
+        "p50": 0.034796,
+        "p95": 0.101897,
+        "p99": 0.101991
+      },
+      "telemetry_seconds": {
+        "n": 19,
+        "p50": 0.001169,
+        "p95": 0.002008,
+        "p99": 0.003819
+      },
+      "vector_seconds": {
+        "n": 11,
+        "p50": 0.375135,
+        "p95": 1.323056,
+        "p99": 1.357369
+      },
+      "embedding_seconds": {
+        "n": 11,
+        "p50": 0.029346,
+        "p95": 0.037428,
+        "p99": 0.041247
+      },
+      "synthesis_seconds": {
+        "n": 19,
+        "p50": 3.617819,
+        "p95": 7.880075,
+        "p99": 10.541912
+      }
+    }
+  },
+  "final": {
+    "requests": 22,
+    "answered": 19,
+    "insufficient_evidence": 3,
+    "errors_or_unclassified": 0,
+    "startup_seconds": 5.919986,
+    "attempted_requests_per_second": 0.78,
+    "all_attempts_seconds": {
+      "n": 22,
+      "p50": 0.05818,
+      "p95": 4.976498,
+      "p99": 5.563714
+    },
+    "answered_seconds": {
+      "n": 19,
+      "p50": 0.101434,
+      "p95": 5.068097,
+      "p99": 5.585262
+    },
+    "document_generation_route_seconds": {
+      "n": 6,
+      "p50": 4.531186,
+      "p95": 5.534982,
+      "p99": 5.678639
+    },
+    "direct_answer_seconds": {
+      "n": 13,
+      "p50": 0.039431,
+      "p95": 0.655079,
+      "p99": 1.316829
+    },
+    "recorded_nonzero_stage_seconds": {
+      "sql_seconds": {
+        "n": 13,
+        "p50": 0.034265,
+        "p95": 0.100853,
+        "p99": 0.101126
+      },
+      "telemetry_seconds": {
+        "n": 13,
+        "p50": 0.001303,
+        "p95": 0.00224,
+        "p99": 0.002666
+      },
+      "vector_seconds": {
+        "n": 7,
+        "p50": 0.33923,
+        "p95": 1.350153,
+        "p99": 1.354057
+      },
+      "embedding_seconds": {
+        "n": 7,
+        "p50": 0.027485,
+        "p95": 0.029862,
+        "p99": 0.030198
+      },
+      "synthesis_seconds": {
+        "n": 13,
+        "p50": 2.6e-05,
+        "p95": 4.319691,
+        "p99": 4.330983
+      },
+      "specification_lookup_seconds": {
+        "n": 6,
+        "p50": 0.037144,
+        "p95": 0.066105,
+        "p99": 0.072446
+      }
+    }
+  }
+}

@@ -1,0 +1,182 @@
+[
+  {
+    "id": "Q01",
+    "split": "tune",
+    "question": "What upgrade addresses DC overcurrent trips during rapid power ramping in hot weather?",
+    "source_hint": "GV-ECO-2024-019"
+  },
+  {
+    "id": "Q02",
+    "split": "tune",
+    "question": "What changed in the chiller relief valve assembly?",
+    "source_hint": "GV-ECO-2024-031"
+  },
+  {
+    "id": "Q03",
+    "split": "tune",
+    "question": "What is the procedure for re-torquing the affected connections?",
+    "source_hint": "GV-ECO-2024-044"
+  },
+  {
+    "id": "Q04",
+    "split": "tune",
+    "question": "What cabinet door seal change was introduced?",
+    "source_hint": "GV-ECO-2024-052"
+  },
+  {
+    "id": "Q05",
+    "split": "tune",
+    "question": "What were the findings of field incident 2024-088?",
+    "source_hint": "GV-INC-2024-088"
+  },
+  {
+    "id": "Q06",
+    "split": "tune",
+    "question": "What caused the contactor flashover and what corrective action was recommended?",
+    "source_hint": "GV-INC-2024-104"
+  },
+  {
+    "id": "Q07",
+    "split": "tune",
+    "question": "How was the low isolation trip investigated?",
+    "source_hint": "GV-INC-2024-119"
+  },
+  {
+    "id": "Q08",
+    "split": "tune",
+    "question": "What maintenance guidance applies to the C-1200?",
+    "source_hint": "GV-MAN-C1200-003"
+  },
+  {
+    "id": "Q09",
+    "split": "tune",
+    "question": "What operating guidance applies to the G-3500?",
+    "source_hint": "GV-MAN-G3500-002"
+  },
+  {
+    "id": "Q10",
+    "split": "tune",
+    "question": "What safety precautions apply when servicing the X-7000?",
+    "source_hint": "GV-MAN-X7000-001"
+  },
+  {
+    "id": "Q11",
+    "split": "tune",
+    "question": "How should temperature and voltage measurement channels be calibrated?",
+    "source_hint": "GV-SOP-CAL-420"
+  },
+  {
+    "id": "Q12",
+    "split": "tune",
+    "question": "What checks are required during the X-7000 site acceptance test?",
+    "source_hint": "GV-SOP-COMM-201"
+  },
+  {
+    "id": "Q13",
+    "split": "tune",
+    "question": "How should equipment be taken out of service at end of life?",
+    "source_hint": "GV-SOP-DECOM-601"
+  },
+  {
+    "id": "Q14",
+    "split": "tune",
+    "question": "What is the approved firmware flashing procedure?",
+    "source_hint": "GV-SOP-FIRM-105"
+  },
+  {
+    "id": "Q15",
+    "split": "tune",
+    "question": "What procedure covers chiller and refrigerant service?",
+    "source_hint": "GV-SOP-HVAC-310"
+  },
+  {
+    "id": "Q16",
+    "split": "tune",
+    "question": "What should a technician do during a battery energy storage fire emergency?",
+    "source_hint": "GV-SOP-SAFETY-900"
+  },
+  {
+    "id": "Q17",
+    "split": "tune",
+    "question": "What information is needed for a field warranty claim?",
+    "source_hint": "GV-SOP-WAR-101"
+  },
+  {
+    "id": "Q18",
+    "split": "tune",
+    "question": "What does a missing BMS heartbeat indicate?",
+    "source_hint": "GV-SPEC-BMS-ARC-01"
+  },
+  {
+    "id": "Q19",
+    "split": "tune",
+    "question": "What are the specifications of the LFP battery cell?",
+    "source_hint": "GV-SPEC-CELL-LFP-08"
+  },
+  {
+    "id": "Q20",
+    "split": "tune",
+    "question": "Find past service work describing maintenance and its resolution.",
+    "source_hint": "gigavolt.rag_payloads"
+  },
+  {
+    "id": "Q21",
+    "split": "test",
+    "question": "Which replacement snubber and firmware are specified for the X-7000 inverter upgrade?",
+    "source_hint": "GV-ECO-2024-019"
+  },
+  {
+    "id": "Q22",
+    "split": "test",
+    "question": "What termination resistance should be measured on the BMS communication bus?",
+    "source_hint": "GV-SPEC-BMS-ARC-01"
+  },
+  {
+    "id": "Q23",
+    "split": "test",
+    "question": "What are the specifications of the NMC battery cell?",
+    "source_hint": "GV-SPEC-CELL-NMC-65"
+  },
+  {
+    "id": "Q24",
+    "split": "test",
+    "question": "What specification covers DC fuses and pyrotechnic disconnects?",
+    "source_hint": "GV-SPEC-FUSE-PYRO-04"
+  },
+  {
+    "id": "Q25",
+    "split": "test",
+    "question": "What heat transfer fluid is specified for the cooling system?",
+    "source_hint": "GV-SPEC-THERM-GLY-02"
+  },
+  {
+    "id": "Q26",
+    "split": "test",
+    "question": "What concerns were identified in the supplier quality audit?",
+    "source_hint": "GV-SUP-AUD-502"
+  },
+  {
+    "id": "Q27",
+    "split": "test",
+    "question": "How are suppliers integrated into the supply chain?",
+    "source_hint": "GV-SUP-REP-401"
+  },
+  {
+    "id": "Q28",
+    "split": "test",
+    "question": "What supply chain risks and mitigations were identified?",
+    "source_hint": "GV-SUP-REP-409"
+  },
+  {
+    "id": "Q29",
+    "split": "test",
+    "question": "What evidence should accompany a warranty claim from a field technician?",
+    "source_hint": "GV-SOP-WAR-101"
+  },
+  {
+    "id": "Q30",
+    "split": "test",
+    "question": "Find previous service records involving a fault diagnosis and repair.",
+    "source_hint": "gigavolt.rag_payloads"
+  }
+]

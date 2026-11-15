@@ -1,0 +1,11 @@
+{
+  "dispatch_id": "DISP-M6-DEMO-001",
+  "equipment_id": "EQ-5002",
+  "dispatch_date": "2026-11-14",
+  "technician": "Milestone 6 Demo",
+  "service_type": "Synthetic Test",
+  "hours_spent": 0,
+  "labor_cost": 0,
+  "resolution_summary": "Synthetic service record for incremental indexing.",
+  "status": "completed"
+}
